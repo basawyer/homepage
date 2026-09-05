@@ -1,0 +1,4 @@
+# Cloudflare Pages. The boat pushes new log entries between code changes,
+# so browsers must revalidate the log instead of serving a cached copy.
+/sailing/data/log.json
+  Cache-Control: no-cache

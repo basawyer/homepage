@@ -19,6 +19,13 @@ Then open http://127.0.0.1:8088/
 - `assets/img/` — project photos
 - `assets/files/` — CV PDF, two presentation decks, one project video
 
+## Deploy
+
+Hosted on Cloudflare Pages at blakesawyer.net, built from the `main` branch of this repo.
+There is no build step — build command is empty, output directory is `/`. Every push to
+`main` deploys, which includes the boat's commits to `sailing/data/log.json`, so new log
+entries go live on their own. `_headers` keeps that file from being cached stale.
+
 ## Map tiles
 
 The sailing map uses CARTO's `dark_all` basemap, which needs a key or CARTO writes

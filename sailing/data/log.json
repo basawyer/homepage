@@ -3,22 +3,25 @@
   "entries": [
     {
       "date": "2026-09-05",
-      "updatedAt": "2026-09-05T21:03:00Z",
+      "updatedAt": "2026-09-05T21:07:59Z",
       "state": "hauled",
-      "position": { "lat": 10.6835, "lon": -61.6373 },
-      "place": "Chaguaramas, Trinidad & Tobago",
-      "logNm": 2050.1,
-      "note": "On the hard, working on the rudder stuffing box.",
+      "position": {
+        "lat": 10.6835,
+        "lon": -61.6373
+      },
+      "place": "10.683, -61.637",
+      "logNm": 2050.2,
+      "note": "On the hard in a Chaguaramas boatyard, Trinidad. Active job: rudder stuffing box.",
       "weather": {
-        "avgWindKt": 4.0,
-        "maxGustKt": 15.9,
-        "minTempC": 26.7,
-        "maxTempC": 33.4,
-        "rainMm": 1.4,
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
         "notable": null
       },
       "battery": {
-        "socPercent": 96,
+        "socPercent": 100,
         "solarProducing": true
       },
       "photos": []

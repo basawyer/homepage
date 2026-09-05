@@ -2,16 +2,16 @@
   "vessel": "SV Sharlie",
   "entries": [
     {
-      "date": "2026-09-05",
-      "updatedAt": "2026-09-05T21:07:59Z",
-      "state": "hauled",
+      "date": "2024-05-07",
+      "updatedAt": "2024-05-07T18:51:48Z",
+      "state": "anchored",
       "position": {
-        "lat": 10.6835,
-        "lon": -61.6373
+        "lat": 23.5266,
+        "lon": -75.7664
       },
-      "place": "10.683, -61.637",
-      "logNm": 2050.2,
-      "note": "On the hard in a Chaguaramas boatyard, Trinidad. Active job: rudder stuffing box.",
+      "place": "Exuma Cays, Bahamas",
+      "logNm": null,
+      "note": "",
       "weather": {
         "avgWindKt": null,
         "maxGustKt": null,
@@ -21,8 +21,2433 @@
         "notable": null
       },
       "battery": {
-        "socPercent": 100,
-        "solarProducing": true
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-05-15",
+      "updatedAt": "2024-05-15T19:06:41Z",
+      "state": "anchored",
+      "position": {
+        "lat": 23.6783,
+        "lon": -75.3422
+      },
+      "place": "Northern Exumas, Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-05-16",
+      "updatedAt": "2024-05-16T18:23:20Z",
+      "state": "anchored",
+      "position": {
+        "lat": 23.6811,
+        "lon": -74.9431
+      },
+      "place": "Northern Exumas, Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-05-22",
+      "updatedAt": "2024-05-22T00:08:02Z",
+      "state": "anchored",
+      "position": {
+        "lat": 23.646,
+        "lon": -74.8474
+      },
+      "place": "Northern Exumas, Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-05-24",
+      "updatedAt": "2024-05-24T19:34:27Z",
+      "state": "anchored",
+      "position": {
+        "lat": 23.1052,
+        "lon": -74.9531
+      },
+      "place": "Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-06-10",
+      "updatedAt": "2024-06-10T13:08:54Z",
+      "state": "anchored",
+      "position": {
+        "lat": 22.8176,
+        "lon": -74.3476
+      },
+      "place": "Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-06-11",
+      "updatedAt": "2024-06-11T04:22:09Z",
+      "state": "anchored",
+      "position": {
+        "lat": 22.6193,
+        "lon": -74.3295
+      },
+      "place": "Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-06-14",
+      "updatedAt": "2024-06-14T01:51:38Z",
+      "state": "anchored",
+      "position": {
+        "lat": 22.2274,
+        "lon": -74.2767
+      },
+      "place": "Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-06-16",
+      "updatedAt": "2024-06-16T16:31:32Z",
+      "state": "anchored",
+      "position": {
+        "lat": 21.7419,
+        "lon": -72.2899
+      },
+      "place": "Turks & Caicos",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-06-18",
+      "updatedAt": "2024-06-18T18:09:09Z",
+      "state": "anchored",
+      "position": {
+        "lat": 21.7393,
+        "lon": -72.2632
+      },
+      "place": "Turks & Caicos",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-07-30",
+      "updatedAt": "2024-07-30T16:43:02Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.9012,
+        "lon": -70.9517
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-11-04",
+      "updatedAt": "2025-11-04T21:54:45Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.9019,
+        "lon": -70.9522
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-11-15",
+      "updatedAt": "2025-11-15T18:14:37Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.9011,
+        "lon": -70.9514
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-11-16",
+      "updatedAt": "2025-11-16T23:58:29Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.5895,
+        "lon": -69.7426
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-11-17",
+      "updatedAt": "2025-11-17T18:52:54Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.1946,
+        "lon": -69.3556
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-03",
+      "updatedAt": "2025-12-03T20:12:23Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.0871,
+        "lon": -69.5459
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-05",
+      "updatedAt": "2025-12-05T16:02:25Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.0891,
+        "lon": -69.5027
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-06",
+      "updatedAt": "2025-12-06T20:25:28Z",
+      "state": "anchored",
+      "position": {
+        "lat": 19.0805,
+        "lon": -69.4707
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-08",
+      "updatedAt": "2025-12-08T23:48:13Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.9931,
+        "lon": -69.05
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-09",
+      "updatedAt": "2025-12-09T18:53:23Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.5014,
+        "lon": -68.3829
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-15",
+      "updatedAt": "2025-12-15T23:07:42Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.5848,
+        "lon": -68.1192
+      },
+      "place": "Dominican Republic",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-16",
+      "updatedAt": "2025-12-16T20:13:10Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0218,
+        "lon": -67.1746
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-19",
+      "updatedAt": "2025-12-19T13:29:03Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0724,
+        "lon": -67.1917
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-22",
+      "updatedAt": "2025-12-22T14:55:39Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0731,
+        "lon": -67.1913
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-26",
+      "updatedAt": "2025-12-26T00:33:06Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0726,
+        "lon": -67.1913
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2025-12-31",
+      "updatedAt": "2025-12-31T19:31:29Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0727,
+        "lon": -67.1913
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-05",
+      "updatedAt": "2026-01-05T19:12:12Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9408,
+        "lon": -67.1974
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-06",
+      "updatedAt": "2026-01-06T18:16:43Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9596,
+        "lon": -66.6344
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-07",
+      "updatedAt": "2026-01-07T14:43:28Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.964,
+        "lon": -66.6169
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-08",
+      "updatedAt": "2026-01-08T14:44:05Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9629,
+        "lon": -66.6171
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-09",
+      "updatedAt": "2026-01-09T20:11:46Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9659,
+        "lon": -66.6188
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-10",
+      "updatedAt": "2026-01-10T13:14:13Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.8893,
+        "lon": -66.5283
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-11",
+      "updatedAt": "2026-01-11T21:36:07Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0731,
+        "lon": -67.1917
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-12",
+      "updatedAt": "2026-01-12T18:04:36Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0726,
+        "lon": -67.1911
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-14",
+      "updatedAt": "2026-01-14T18:05:43Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0729,
+        "lon": -67.1916
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-16",
+      "updatedAt": "2026-01-16T21:19:54Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0728,
+        "lon": -67.1916
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-18",
+      "updatedAt": "2026-01-18T21:38:57Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0213,
+        "lon": -67.1785
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-19",
+      "updatedAt": "2026-01-19T21:39:38Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0227,
+        "lon": -67.1778
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-20",
+      "updatedAt": "2026-01-20T14:05:06Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9701,
+        "lon": -67.0385
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-21",
+      "updatedAt": "2026-01-21T13:15:40Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9486,
+        "lon": -66.8705
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-22",
+      "updatedAt": "2026-01-22T13:14:17Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9763,
+        "lon": -66.621
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-23",
+      "updatedAt": "2026-01-23T13:39:49Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.8858,
+        "lon": -66.5295
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-25",
+      "updatedAt": "2026-01-25T14:00:48Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9489,
+        "lon": -66.2917
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-26",
+      "updatedAt": "2026-01-26T17:00:25Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9541,
+        "lon": -66.2919
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-28",
+      "updatedAt": "2026-01-28T14:07:29Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.9751,
+        "lon": -65.994
+      },
+      "place": "Puerto Rico",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-01-29",
+      "updatedAt": "2026-01-29T20:29:17Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3065,
+        "lon": -65.2986
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-02",
+      "updatedAt": "2026-02-02T21:09:42Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3055,
+        "lon": -65.2979
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-04",
+      "updatedAt": "2026-02-04T14:37:38Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3059,
+        "lon": -65.2984
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-06",
+      "updatedAt": "2026-02-06T20:32:51Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3367,
+        "lon": -64.9314
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-07",
+      "updatedAt": "2026-02-07T15:21:21Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3371,
+        "lon": -64.9293
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-08",
+      "updatedAt": "2026-02-08T01:27:35Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3364,
+        "lon": -64.9296
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-10",
+      "updatedAt": "2026-02-10T14:39:59Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3367,
+        "lon": -64.93
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-13",
+      "updatedAt": "2026-02-13T14:41:33Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3373,
+        "lon": -64.93
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-15",
+      "updatedAt": "2026-02-15T14:42:41Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3365,
+        "lon": -64.9301
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-17",
+      "updatedAt": "2026-02-17T14:43:49Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3371,
+        "lon": -64.9302
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-18",
+      "updatedAt": "2026-02-18T18:06:28Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3314,
+        "lon": -64.9389
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-19",
+      "updatedAt": "2026-02-19T14:39:58Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3409,
+        "lon": -64.98
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-23",
+      "updatedAt": "2026-02-23T20:37:18Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3293,
+        "lon": -64.9483
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-02-24",
+      "updatedAt": "2026-02-24T03:48:29Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3295,
+        "lon": -64.9476
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-03-15",
+      "updatedAt": "2026-03-15T15:54:49Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3296,
+        "lon": -64.9484
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-03-20",
+      "updatedAt": "2026-03-20T16:36:54Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.3599,
+        "lon": -64.7474
+      },
+      "place": "Virgin Islands",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-03-21",
+      "updatedAt": "2026-03-21T23:54:45Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.236,
+        "lon": -63.9545
+      },
+      "place": "18.236N, 63.955W",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-03-22",
+      "updatedAt": "2026-03-22T10:24:07Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0749,
+        "lon": -63.0899
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-04-06",
+      "updatedAt": "2026-04-06T13:42:28Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0668,
+        "lon": -63.1007
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-04-07",
+      "updatedAt": "2026-04-07T10:33:49Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.075,
+        "lon": -63.0902
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-04-14",
+      "updatedAt": "2026-04-14T10:38:03Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0745,
+        "lon": -63.0899
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-04-15",
+      "updatedAt": "2026-04-15T18:08:09Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0745,
+        "lon": -63.0901
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-04-25",
+      "updatedAt": "2026-04-25T17:43:18Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0751,
+        "lon": -63.0898
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-04-27",
+      "updatedAt": "2026-04-27T19:10:18Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0749,
+        "lon": -63.0903
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-05-10",
+      "updatedAt": "2026-05-10T15:54:22Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.1059,
+        "lon": -63.0569
+      },
+      "place": "Anguilla",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-05-25",
+      "updatedAt": "2026-05-25T14:43:44Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.0747,
+        "lon": -63.0867
+      },
+      "place": "St. Martin / Sint Maarten",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-06",
+      "updatedAt": "2026-06-06T17:33:26Z",
+      "state": "anchored",
+      "position": {
+        "lat": 18.1015,
+        "lon": -63.0622
+      },
+      "place": "Anguilla",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-09",
+      "updatedAt": "2026-06-09T21:54:18Z",
+      "state": "anchored",
+      "position": {
+        "lat": 17.2523,
+        "lon": -62.6597
+      },
+      "place": "17.252N, 62.660W",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-10",
+      "updatedAt": "2026-06-10T22:58:02Z",
+      "state": "anchored",
+      "position": {
+        "lat": 16.4857,
+        "lon": -62.1429
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-11",
+      "updatedAt": "2026-06-11T06:33:20Z",
+      "state": "anchored",
+      "position": {
+        "lat": 16.1626,
+        "lon": -61.7776
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T18:51:10Z",
+      "state": "anchored",
+      "position": {
+        "lat": 16.1592,
+        "lon": -61.778
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-13",
+      "updatedAt": "2026-06-13T22:51:52Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.9773,
+        "lon": -61.7146
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-14",
+      "updatedAt": "2026-06-14T06:48:08Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.978,
+        "lon": -61.7148
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-15",
+      "updatedAt": "2026-06-15T20:31:16Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.8709,
+        "lon": -61.5843
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-16",
+      "updatedAt": "2026-06-16T11:14:40Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.8711,
+        "lon": -61.5835
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-26",
+      "updatedAt": "2026-06-26T13:45:19Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.8737,
+        "lon": -61.5966
+      },
+      "place": "Guadeloupe",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-28",
+      "updatedAt": "2026-06-28T20:28:33Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.5832,
+        "lon": -61.4643
+      },
+      "place": "Dominica",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-06-30",
+      "updatedAt": "2026-06-30T20:39:02Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.5206,
+        "lon": -61.4726
+      },
+      "place": "Dominica",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-07-01",
+      "updatedAt": "2026-07-01T23:03:46Z",
+      "state": "anchored",
+      "position": {
+        "lat": 15.2829,
+        "lon": -61.3759
+      },
+      "place": "Dominica",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-07-12",
+      "updatedAt": "2026-07-12T19:48:12Z",
+      "state": "anchored",
+      "position": {
+        "lat": 14.599,
+        "lon": -61.0683
+      },
+      "place": "Martinique",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-07-16",
+      "updatedAt": "2026-07-16T14:07:57Z",
+      "state": "anchored",
+      "position": {
+        "lat": 14.5533,
+        "lon": -61.0582
+      },
+      "place": "Martinique",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-07-20",
+      "updatedAt": "2026-07-20T18:28:23Z",
+      "state": "anchored",
+      "position": {
+        "lat": 14.5282,
+        "lon": -61.0881
+      },
+      "place": "Martinique",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-07-21",
+      "updatedAt": "2026-07-21T18:16:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 13.8249,
+        "lon": -61.0637
+      },
+      "place": "St. Lucia",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-07-22",
+      "updatedAt": "2026-07-22T19:56:41Z",
+      "state": "anchored",
+      "position": {
+        "lat": 13.0035,
+        "lon": -61.2421
+      },
+      "place": "13.004N, 61.242W",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-08-01",
+      "updatedAt": "2026-08-01T21:54:16Z",
+      "state": "anchored",
+      "position": {
+        "lat": 12.1074,
+        "lon": -61.7522
+      },
+      "place": "Grenada",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-08-02",
+      "updatedAt": "2026-08-02T12:42:37Z",
+      "state": "anchored",
+      "position": {
+        "lat": 11.9956,
+        "lon": -61.7626
+      },
+      "place": "Grenada",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-08-04",
+      "updatedAt": "2026-08-04T13:36:41Z",
+      "state": "anchored",
+      "position": {
+        "lat": 12.0037,
+        "lon": -61.735
+      },
+      "place": "Grenada",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-08-19",
+      "updatedAt": "2026-08-19T22:12:05Z",
+      "state": "anchored",
+      "position": {
+        "lat": 11.7993,
+        "lon": -61.6768
+      },
+      "place": "Grenada",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-08-20",
+      "updatedAt": "2026-08-20T13:29:33Z",
+      "state": "anchored",
+      "position": {
+        "lat": 10.6784,
+        "lon": -61.6368
+      },
+      "place": "Chaguaramas, Trinidad & Tobago",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-08-21",
+      "updatedAt": "2026-08-21T13:30:01Z",
+      "state": "anchored",
+      "position": {
+        "lat": 10.6789,
+        "lon": -61.6366
+      },
+      "place": "Chaguaramas, Trinidad & Tobago",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-08-30",
+      "updatedAt": "2026-08-30T22:53:21Z",
+      "state": "anchored",
+      "position": {
+        "lat": 10.679,
+        "lon": -61.6373
+      },
+      "place": "Chaguaramas, Trinidad & Tobago",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-09-01",
+      "updatedAt": "2026-09-01T13:15:44Z",
+      "state": "anchored",
+      "position": {
+        "lat": 10.6806,
+        "lon": -61.6368
+      },
+      "place": "Chaguaramas, Trinidad & Tobago",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2026-09-02",
+      "updatedAt": "2026-09-02T13:13:29Z",
+      "state": "hauled",
+      "position": {
+        "lat": 10.6834,
+        "lon": -61.6373
+      },
+      "place": "Chaguaramas, Trinidad & Tobago",
+      "logNm": null,
+      "note": "On the hard in a Chaguaramas boatyard, Trinidad. Rudder stuffing box.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
       },
       "photos": []
     }

@@ -92,7 +92,7 @@ body.sailing-page {
 .notable {
   font-size: 0.82rem;
   color: var(--text);
-  background: rgba(79,141,253,0.1);
+  background: rgba(76,192,168,0.1);
   border-left: 2px solid var(--accent);
   padding: 0.4rem 0.65rem;
   border-radius: 3px;
@@ -159,11 +159,27 @@ body.sailing-page {
 #map {
   width: 100%;
   height: 100%;
+  background: var(--bg);
 }
 
-/* Leaflet marker overrides */
+/* CARTO's dark tiles are near-neutral gray; sepia colorizes them and
+   hue-rotate aims them at the page's petrol hue. Raise saturate for more
+   color, lower it toward 0 to go back to plain dark gray. */
+.leaflet-tile-pane {
+  filter: sepia(0.5) hue-rotate(145deg) saturate(1.6) brightness(0.92);
+}
+
+/* Hide Leaflet's default white icon box so only the stay-sized dot shows */
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+
+/* Leaflet marker overrides — size is set per-stay via the icon box */
 .map-dot {
-  width: 10px; height: 10px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
   border-radius: 50%;
   background: var(--text-dim);
   border: 2px solid var(--bg);
@@ -173,8 +189,25 @@ body.sailing-page {
 .map-dot.selected {
   background: var(--accent);
   border-color: var(--bg);
-  transform: scale(1.5);
+  transform: scale(1.35);
 }
+
+/* Leaflet chrome — zoom buttons and attribution default to white */
+.leaflet-bar { border: 1px solid var(--border); }
+.leaflet-bar a {
+  background: var(--bg-raised);
+  color: var(--text-dim);
+  border-bottom-color: var(--border);
+}
+.leaflet-bar a:hover {
+  background: var(--bg-raised);
+  color: var(--text);
+}
+.leaflet-control-attribution {
+  background: rgba(8,19,27,0.75);
+  color: var(--text-dim);
+}
+.leaflet-control-attribution a { color: var(--accent); }
 
 /* Leaflet popup custom style */
 .leaflet-popup-content-wrapper {
@@ -188,6 +221,7 @@ body.sailing-page {
 .leaflet-popup-content { margin: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.5; }
 .popup-date { font-weight: 700; margin-bottom: 0.15rem; }
 .popup-place { color: var(--accent); }
+.popup-stay { color: var(--text-dim); font-size: 0.75rem; margin-top: 0.2rem; }
 
 .dim { color: var(--text-dim); font-size: 0.9rem; }
 

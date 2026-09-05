@@ -19,6 +19,13 @@ Then open http://127.0.0.1:8088/
 - `assets/img/` — project photos
 - `assets/files/` — CV PDF, two presentation decks, one project video
 
+## Map tiles
+
+The sailing map uses CARTO's `dark_all` basemap, which needs a key or CARTO writes
+"API KEY REQUIRED" across the tiles. Keys are free from https://carto.com/basemaps/apikey/
+(no account, 5M tiles/month) — drop yours into `CARTO_KEY` at the top of
+`assets/js/sailing.js`. CARTO and OpenStreetMap attribution must stay visible.
+
 ## Design
 
 Dark background, single accent color, one scrolling page. Nav bar is sticky; most links

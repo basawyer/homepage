@@ -1,13 +1,14 @@
 /* Blake Sawyer Dot Net — redesign 2026 */
 
 :root {
-  --bg: #0b0c0e;
-  --bg-raised: #131417;
-  --text: #e8e8ea;
-  --text-dim: #9a9ca3;
-  --accent: #4f8dfd;
-  --accent-hover: #78aaff;
-  --border: #22242a;
+  /* Deep water: navy base, greener raised surfaces, sea-green accent */
+  --bg: #08131b;
+  --bg-raised: #0e1f21;
+  --text: #e5eded;
+  --text-dim: #93a9ac;
+  --accent: #4cc0a8;
+  --accent-hover: #70d9c3;
+  --border: #1d383d;
   --max-w: 720px;
   font-size: 17px;
 }
@@ -38,7 +39,7 @@ nav.site-nav {
   justify-content: center;
   gap: 1.75rem;
   padding: 1rem 1.25rem;
-  background: rgba(11, 12, 14, 0.85);
+  background: rgba(8, 19, 27, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   font-size: 0.9rem;

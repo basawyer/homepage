@@ -11,11 +11,81 @@
   var markers = [];   // parallel to entries[]
   var selected = -1;
 
+  /* Free from https://carto.com/basemaps/apikey/ — no account, 5M tiles/month.
+     Left empty, CARTO writes "API KEY REQUIRED" across every tile. */
+  var CARTO_KEY = "cb1_2yfx_1_f83f08519bd0d660edd22ef0";
+
+  /* Same harbor / anchorage: consecutive logs within this distance count as one stay */
+  var SAME_PLACE_NM = 3;
+  var DOT_MIN_PX = 8;
+  var DOT_MAX_PX = 28;
+  /* Longest stay that still grows the dot; anything longer is max size */
+  var DOT_CAP_DAYS = 60;
+
+  function parseDay(s) {
+    return new Date(s + "T00:00:00Z");
+  }
+
+  function daysBetween(a, b) {
+    return Math.round((parseDay(b) - parseDay(a)) / 86400000);
+  }
+
+  function distNm(a, b) {
+    var R = 3440.065;
+    var toRad = function(d) { return d * Math.PI / 180; };
+    var dLat = toRad(b.lat - a.lat);
+    var dLon = toRad(b.lon - a.lon);
+    var lat1 = toRad(a.lat);
+    var lat2 = toRad(b.lat);
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * R * Math.asin(Math.min(1, Math.sqrt(h)));
+  }
+
+  function todayISO() {
+    var d = new Date();
+    return d.toISOString().slice(0, 10);
+  }
+
+  /* Days on station for each entry: consecutive logs within SAME_PLACE_NM
+     share the span from first log until the next log that left (or today). */
+  function stayDays(ents) {
+    var days = new Array(ents.length);
+    var i = 0;
+    while (i < ents.length) {
+      var j = i + 1;
+      while (j < ents.length && distNm(ents[i].position, ents[j].position) <= SAME_PLACE_NM) {
+        j++;
+      }
+      var leave = j < ents.length ? ents[j].date : todayISO();
+      var n = Math.max(1, daysBetween(ents[i].date, leave));
+      for (var k = i; k < j; k++) days[k] = n;
+      i = j;
+    }
+    return days;
+  }
+
+  function dotSize(days) {
+    var t = Math.sqrt(Math.min(days, DOT_CAP_DAYS) / DOT_CAP_DAYS);
+    return Math.round(DOT_MIN_PX + t * (DOT_MAX_PX - DOT_MIN_PX));
+  }
+
+  function fmtStay(days) {
+    if (days < 45) return days + (days === 1 ? " day" : " days") + " here";
+    var months = Math.round(days / 30.44);
+    if (months < 18) return months + " months here";
+    var years = Math.round(days / 365.25);
+    return years + (years === 1 ? " year" : " years") + " here";
+  }
+
   /* ── Map setup ─────────────────────────────────────── */
   function initMap(ents) {
     map = L.map("map", { zoomControl: true, attributionControl: true });
 
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    var tileUrl = "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png" +
+      (CARTO_KEY ? "?key=" + CARTO_KEY : "");
+
+    L.tileLayer(tileUrl, {
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
       subdomains: "abcd",
       maxZoom: 19
@@ -23,21 +93,25 @@
 
     // Track line
     var coords = ents.map(function(e){ return [e.position.lat, e.position.lon]; });
-    trackLine = L.polyline(coords, { color: "rgba(79,141,253,0.35)", weight: 2, dashArray: "4 4" }).addTo(map);
+    trackLine = L.polyline(coords, { color: "rgba(76,192,168,0.45)", weight: 2, dashArray: "4 4" }).addTo(map);
 
-    // Markers — one per entry
+    var dwell = stayDays(ents);
+
+    // Markers — one per entry, sized by time on station
     ents.forEach(function(e, i) {
+      var px = dotSize(dwell[i]);
       var icon = L.divIcon({
         className: "",
         html: '<div class="map-dot" data-idx="' + i + '"></div>',
-        iconSize: [14, 14],
-        iconAnchor: [7, 7],
-        popupAnchor: [0, -10]
+        iconSize: [px, px],
+        iconAnchor: [px / 2, px / 2],
+        popupAnchor: [0, -px / 2 - 4]
       });
-      var m = L.marker([e.position.lat, e.position.lon], { icon: icon });
+      var m = L.marker([e.position.lat, e.position.lon], { icon: icon, zIndexOffset: px });
       m.bindPopup(
         '<div class="popup-date">' + fmtDate(e.date) + '</div>' +
-        '<div class="popup-place">' + e.place + '</div>'
+        '<div class="popup-place">' + e.place + '</div>' +
+        '<div class="popup-stay">' + fmtStay(dwell[i]) + '</div>'
       );
       m.on("click", function() { selectEntry(i, false); });
       m.addTo(map);

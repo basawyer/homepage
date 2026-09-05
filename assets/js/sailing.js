@@ -1,156 +1,156 @@
 (function () {
-  var STATE_LABELS = {
-    hauled: "Hauled out",
-    anchored: "At anchor",
-    marina: "In a marina",
-    passage: "Underway"
-  };
+  var STATE_LABELS = { hauled:"Hauled out", anchored:"At anchor", marina:"In a marina", passage:"Underway" };
 
-  function fmtDate(dateStr) {
-    var d = new Date(dateStr + "T00:00:00Z");
-    return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+  function fmtDate(s) {
+    var d = new Date(s + "T00:00:00Z");
+    return d.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric", timeZone:"UTC" });
   }
 
-  function fmtPos(pos) {
-    if (!pos) return "";
-    var lat = pos.lat, lon = pos.lon;
-    var ns = lat >= 0 ? "N" : "S";
-    var ew = lon >= 0 ? "E" : "W";
-    return Math.abs(lat).toFixed(4) + "°" + ns + " " + Math.abs(lon).toFixed(4) + "°" + ew;
+  var entries = [];
+  var map, trackLine;
+  var markers = [];   // parallel to entries[]
+  var selected = -1;
+
+  /* ── Map setup ─────────────────────────────────────── */
+  function initMap(ents) {
+    map = L.map("map", { zoomControl: true, attributionControl: true });
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/">CARTO</a>',
+      subdomains: "abcd",
+      maxZoom: 19
+    }).addTo(map);
+
+    // Track line
+    var coords = ents.map(function(e){ return [e.position.lat, e.position.lon]; });
+    trackLine = L.polyline(coords, { color: "rgba(79,141,253,0.35)", weight: 2, dashArray: "4 4" }).addTo(map);
+
+    // Markers — one per entry
+    ents.forEach(function(e, i) {
+      var icon = L.divIcon({
+        className: "",
+        html: '<div class="map-dot" data-idx="' + i + '"></div>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+        popupAnchor: [0, -10]
+      });
+      var m = L.marker([e.position.lat, e.position.lon], { icon: icon });
+      m.bindPopup(
+        '<div class="popup-date">' + fmtDate(e.date) + '</div>' +
+        '<div class="popup-place">' + e.place + '</div>'
+      );
+      m.on("click", function() { selectEntry(i, false); });
+      m.addTo(map);
+      markers.push(m);
+    });
+
+    map.fitBounds(trackLine.getBounds(), { padding: [30, 30] });
   }
 
-  function renderHeader(entry, opts) {
-    opts = opts || {};
-    var el = document.getElementById("log-detail");
-    var stateLabel = STATE_LABELS[entry.state] || entry.state;
-    var w = entry.weather || {};
-    var b = entry.battery || {};
-
+  /* ── Entry card ─────────────────────────────────────── */
+  function renderCard(e) {
+    var w = e.weather || {};
+    var b = e.battery || {};
     var html = "";
-    html += '<span class="state-chip">' + stateLabel + "</span>";
-    html += '<div class="date-line">' + fmtDate(entry.date) + "</div>";
-    html += '<div class="place-line">' + (entry.place || fmtPos(entry.position)) + "</div>";
-
-    if (opts.viewingPast) {
-      html += '<div class="viewing-note">Viewing a past entry.<a href="#" id="back-to-latest">Back to latest ↺</a></div>';
-    }
-
-    if (entry.note) {
-      html += '<p class="log-note">' + entry.note + "</p>";
-    }
-
-    if (entry.weather.notable) {
-      html += '<div class="notable">' + entry.weather.notable + "</div>";
-    }
-
+    html += '<div class="date-line">' + fmtDate(e.date) + "</div>";
+    html += '<div class="place-line">' + e.place + "</div>";
+    html += '<span class="state-chip">' + (STATE_LABELS[e.state] || e.state) + "</span>";
+    if (e.note) html += '<div class="note-line">' + e.note + "</div>";
+    if (e.weather && e.weather.notable) html += '<div class="notable">' + e.weather.notable + "</div>";
     html += '<div class="stat-grid">';
-    if (typeof w.avgWindKt === "number") {
-      html += '<div class="stat"><span class="label">Avg wind</span><span class="value">' + w.avgWindKt.toFixed(1) + " kt</span></div>";
-    }
-    if (typeof w.maxGustKt === "number") {
-      html += '<div class="stat"><span class="label">Max gust</span><span class="value">' + w.maxGustKt.toFixed(1) + " kt</span></div>";
-    }
-    if (typeof w.minTempC === "number" && typeof w.maxTempC === "number") {
-      html += '<div class="stat"><span class="label">Temp</span><span class="value">' + Math.round(w.minTempC) + "–" + Math.round(w.maxTempC) + "°C</span></div>";
-    }
-    if (typeof w.rainMm === "number") {
-      html += '<div class="stat"><span class="label">Rain</span><span class="value">' + w.rainMm.toFixed(1) + " mm</span></div>";
-    }
-    if (typeof entry.logNm === "number") {
-      html += '<div class="stat"><span class="label">Log</span><span class="value">' + entry.logNm.toFixed(1) + " nm</span></div>";
-    }
-    if (typeof b.socPercent === "number") {
-      html += '<div class="stat"><span class="label">Battery</span><span class="value">' + b.socPercent + "%" + (b.solarProducing ? " ☀" : "") + "</span></div>";
-    }
+    if (typeof w.avgWindKt === "number")
+      html += stat("Avg wind", w.avgWindKt.toFixed(1) + " kt");
+    if (typeof w.maxGustKt === "number")
+      html += stat("Max gust", w.maxGustKt.toFixed(1) + " kt");
+    if (typeof w.rainMm === "number")
+      html += stat("Rain", w.rainMm.toFixed(1) + " mm");
+    if (typeof w.minTempC === "number")
+      html += stat("Temp", Math.round(w.minTempC) + "–" + Math.round(w.maxTempC) + "°C");
+    if (typeof e.logNm === "number")
+      html += stat("Log", e.logNm.toFixed(0) + " nm");
+    if (typeof b.socPercent === "number")
+      html += stat("Battery", b.socPercent + "%" + (b.solarProducing ? " ☀" : ""));
     html += "</div>";
-
-    if (entry.photos && entry.photos.length) {
-      html += '<div class="photo-grid">';
-      entry.photos.forEach(function (p) {
-        html += '<img src="' + p.url + '" alt="' + (p.caption || "") + '" loading="lazy" />';
-      });
-      html += "</div>";
-    }
-
-    el.innerHTML = html;
-
-    var backLink = document.getElementById("back-to-latest");
-    if (backLink) {
-      backLink.addEventListener("click", function (e) {
-        e.preventDefault();
-        selectEntry(window.__sailingEntries.length - 1);
-      });
-    }
+    document.getElementById("entry-content").innerHTML = html;
   }
 
-  function renderTimeline(entries) {
+  function stat(label, value) {
+    return '<div class="stat"><span class="label">' + label + '</span><span class="value">' + value + "</span></div>";
+  }
+
+  /* ── Timeline ───────────────────────────────────────── */
+  function renderTimeline(ents) {
     var el = document.getElementById("timeline");
     el.innerHTML = "";
-    // Newest first in the list, so scrolling down goes further into the past.
-    for (var i = entries.length - 1; i >= 0; i--) {
-      (function (idx) {
-        var entry = entries[idx];
-        var wrap = document.createElement("div");
-        wrap.className = "timeline-entry" + (idx === entries.length - 1 ? " latest" : "");
-        wrap.dataset.index = idx;
-
-        var dot = document.createElement("span");
-        dot.className = "dot";
-        dot.addEventListener("click", function () { selectEntry(idx); });
-
-        var btn = document.createElement("button");
-        btn.className = "entry-link";
-        btn.innerHTML =
-          '<div class="entry-date">' + fmtDate(entry.date) + "</div>" +
-          '<div class="entry-summary">' + (entry.place || fmtPos(entry.position)) +
-          (entry.weather && entry.weather.notable ? " · " + entry.weather.notable : "") +
-          "</div>";
-        btn.addEventListener("click", function () { selectEntry(idx); });
-
-        wrap.appendChild(dot);
-        wrap.appendChild(btn);
-        el.appendChild(wrap);
+    // Newest first
+    for (var i = ents.length - 1; i >= 0; i--) {
+      (function(idx) {
+        var e = ents[idx];
+        var row = document.createElement("div");
+        row.className = "timeline-entry" + (idx === ents.length - 1 ? " latest" : "");
+        row.dataset.idx = idx;
+        row.innerHTML =
+          '<span class="dot"></span>' +
+          '<div class="entry-date">' + fmtDate(e.date) + "</div>" +
+          '<div class="entry-summary">' + e.place + "</div>";
+        row.addEventListener("click", function() { selectEntry(idx, true); });
+        el.appendChild(row);
       })(i);
     }
   }
 
-  function selectEntry(idx) {
-    var entries = window.__sailingEntries;
-    var entry = entries[idx];
-    var isLatest = idx === entries.length - 1;
-    renderHeader(entry, { viewingPast: !isLatest });
-    document.querySelectorAll(".timeline-entry").forEach(function (el) {
-      el.classList.toggle("selected", Number(el.dataset.index) === idx);
-    });
-    document.getElementById("log-header").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  /* ── Selection — the single source of truth ─────────── */
+  function selectEntry(idx, flyMap) {
+    if (idx === selected) return;
+    selected = idx;
+    var e = entries[idx];
 
-  function setNavHeight() {
-    var nav = document.querySelector("nav.site-nav");
-    if (nav) {
-      document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+    // Update card
+    renderCard(e);
+
+    // Update timeline highlight + scroll the row into view
+    document.querySelectorAll(".timeline-entry").forEach(function(el) {
+      el.classList.toggle("selected", Number(el.dataset.idx) === idx);
+    });
+    var row = document.querySelector('.timeline-entry[data-idx="' + idx + '"]');
+    if (row) row.scrollIntoView({ block: "nearest", behavior: "smooth" });
+
+    // Update map markers
+    document.querySelectorAll(".map-dot").forEach(function(el) {
+      el.classList.toggle("selected", Number(el.dataset.idx) === idx);
+    });
+
+    // Pan/fly map
+    if (map) {
+      var latlng = [e.position.lat, e.position.lon];
+      if (flyMap) {
+        map.flyTo(latlng, Math.max(map.getZoom(), 9), { duration: 0.8 });
+      } else {
+        map.panTo(latlng);
+      }
+      markers[idx].openPopup();
     }
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    setNavHeight();
-    window.addEventListener("resize", setNavHeight);
+  /* ── Bootstrap ──────────────────────────────────────── */
+  window.addEventListener("load", function() {
     fetch("data/log.json")
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        window.__sailingEntries = data.entries || [];
-        if (!window.__sailingEntries.length) {
-          document.getElementById("log-detail").innerHTML = '<p class="loading">No log entries yet.</p>';
-          document.getElementById("timeline").innerHTML = "";
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        entries = (data.entries || []).slice();
+        if (!entries.length) {
+          document.getElementById("entry-content").innerHTML = '<p class="dim">No log entries yet.</p>';
           return;
         }
-        renderTimeline(window.__sailingEntries);
-        renderHeader(window.__sailingEntries[window.__sailingEntries.length - 1]);
-        var latestEl = document.querySelector(".timeline-entry.latest");
-        if (latestEl) latestEl.classList.add("selected");
+        renderTimeline(entries);
+        initMap(entries);
+        selectEntry(entries.length - 1, false);
+        // Mark latest dot selected in timeline
+        var latestRow = document.querySelector(".timeline-entry.latest");
+        if (latestRow) latestRow.classList.add("selected");
       })
-      .catch(function (err) {
-        document.getElementById("log-detail").innerHTML = '<p class="loading">Could not load the log.</p>';
+      .catch(function(err) {
+        document.getElementById("entry-content").innerHTML = '<p class="dim">Could not load the log.</p>';
         console.error(err);
       });
   });

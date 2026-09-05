@@ -1,127 +1,201 @@
-/* Sailing log — sticky header + vertical timeline */
+/* Sailing log — two-column full-viewport layout */
 
-.log-header {
-  position: sticky;
-  top: var(--nav-h, 56px); /* set at runtime to the nav's real height */
-  z-index: 40;
-  background: var(--bg);
+/* Kill the main scrollbar; each column scrolls independently */
+body.sailing-page {
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The two-column grid sits below the sticky nav */
+.log-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0; /* allow flex children to scroll */
+  overflow: hidden;
+}
+
+/* ── LEFT COLUMN (1/3) ── */
+.log-left {
+  width: 33.333%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  min-height: 0;
+}
+
+/* Entry card — fixed height at top of left column */
+.entry-card {
+  flex-shrink: 0;
+  height: 25vh;
+  min-height: 160px;
+  overflow-y: auto;
+  padding: 1.1rem 1.25rem;
   border-bottom: 1px solid var(--border);
-  padding: 1.5rem 1.25rem 1.75rem;
+  background: var(--bg);
 }
-.log-header-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.log-header h1 { margin: 0 0 0.25rem; font-size: 1.6rem; }
-.log-header .subtitle { margin: 0 0 1.25rem; color: var(--text-dim); font-size: 0.9rem; }
-
-.log-detail .state-chip {
-  display: inline-block;
-  font-size: 0.75rem;
+.entry-card-vessel {
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 999px;
-  padding: 0.15rem 0.7rem;
-  margin-bottom: 0.6rem;
-}
-.log-detail .date-line {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-bottom: 0.35rem;
-}
-.log-detail .place-line { color: var(--text-dim); margin-bottom: 0.85rem; }
-.log-detail .viewing-note {
-  font-size: 0.8rem;
+  letter-spacing: 0.1em;
   color: var(--text-dim);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.5rem;
 }
-.log-detail .viewing-note a { margin-left: 0.5rem; }
-
+.entry-card .date-line {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+.entry-card .place-line {
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-bottom: 0.55rem;
+}
+.entry-card .state-chip {
+  display: inline-block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  margin-bottom: 0.55rem;
+}
+.entry-card .note-line {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 0.55rem;
+}
 .stat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 0.85rem;
-  margin-bottom: 0.85rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
 }
 .stat {
   background: var(--bg-raised);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
 }
 .stat .label {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   color: var(--text-dim);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.1rem;
 }
-.stat .value { font-size: 1.05rem; font-weight: 600; }
+.stat .value { font-size: 0.88rem; font-weight: 600; }
 
 .notable {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   color: var(--text);
-  background: rgba(79, 141, 253, 0.1);
-  border-left: 3px solid var(--accent);
-  padding: 0.6rem 0.85rem;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
+  background: rgba(79,141,253,0.1);
+  border-left: 2px solid var(--accent);
+  padding: 0.4rem 0.65rem;
+  border-radius: 3px;
+  margin: 0.4rem 0;
 }
-.log-note { font-size: 0.9rem; color: var(--text-dim); }
 
-/* ---- Timeline ---- */
-.timeline-section { padding-top: 3rem; }
-.timeline {
-  position: relative;
-  padding-left: 2rem;
+/* Timeline — scrollable lower part of left column */
+.timeline-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem 2rem;
+  min-height: 0;
 }
+.timeline { position: relative; padding-left: 1.4rem; }
 .timeline::before {
   content: "";
   position: absolute;
-  left: 7px;
-  top: 6px;
-  bottom: 6px;
+  left: 5px; top: 8px; bottom: 8px;
   width: 2px;
   background: var(--border);
 }
 .timeline-entry {
   position: relative;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
 }
 .timeline-entry:last-child { padding-bottom: 0; }
-.timeline-entry .dot {
+.dot {
   position: absolute;
-  left: -2rem;
-  top: 0.15rem;
-  width: 16px;
-  height: 16px;
+  left: -1.4rem;
+  top: 0.3rem;
+  width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--bg);
-  border: 2px solid var(--text-dim);
-  cursor: pointer;
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  border: 2px solid var(--border);
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
 }
-.timeline-entry .dot:hover { border-color: var(--accent); transform: scale(1.15); }
+.timeline-entry:hover .dot { border-color: var(--accent); transform: scale(1.2); }
 .timeline-entry.selected .dot,
 .timeline-entry.latest .dot {
   border-color: var(--accent);
   background: var(--accent);
 }
-.timeline-entry button.entry-link {
-  background: none;
-  border: none;
-  color: var(--text);
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-  padding: 0;
+.entry-date {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  transition: color 0.15s;
 }
-.timeline-entry button.entry-link:hover .entry-date { color: var(--accent); }
-.timeline-entry .entry-date { font-weight: 600; }
-.timeline-entry .entry-summary { color: var(--text-dim); font-size: 0.9rem; margin-top: 0.15rem; }
-.timeline-entry.selected .entry-date { color: var(--accent); }
+.timeline-entry.selected .entry-date,
+.timeline-entry:hover .entry-date { color: var(--text); }
+.entry-summary {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  margin-top: 0.1rem;
+}
+.timeline-entry.selected .entry-summary { color: var(--text-dim); }
 
-.loading { color: var(--text-dim); font-size: 0.9rem; }
+/* ── RIGHT COLUMN (2/3) — map ── */
+.log-right {
+  width: 66.667%;
+  position: relative;
+}
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* Leaflet marker overrides */
+.map-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  border: 2px solid var(--bg);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.map-dot.selected {
+  background: var(--accent);
+  border-color: var(--bg);
+  transform: scale(1.5);
+}
+
+/* Leaflet popup custom style */
+.leaflet-popup-content-wrapper {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.leaflet-popup-tip { background: var(--bg-raised); }
+.leaflet-popup-content { margin: 0.7rem 0.9rem; font-size: 0.85rem; line-height: 1.5; }
+.popup-date { font-weight: 700; margin-bottom: 0.15rem; }
+.popup-place { color: var(--accent); }
+
+.dim { color: var(--text-dim); font-size: 0.9rem; }
+
+/* Responsive: stack on small screens */
+@media (max-width: 700px) {
+  body.sailing-page { overflow: auto; }
+  .log-layout { flex-direction: column; }
+  .log-left { width: 100%; }
+  .log-right { width: 100%; height: 55vh; }
+  .entry-card { height: auto; }
+}

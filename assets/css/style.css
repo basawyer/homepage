@@ -1,0 +1,197 @@
+/* Blake Sawyer Dot Net — redesign 2026 */
+
+:root {
+  --bg: #0b0c0e;
+  --bg-raised: #131417;
+  --text: #e8e8ea;
+  --text-dim: #9a9ca3;
+  --accent: #4f8dfd;
+  --accent-hover: #78aaff;
+  --border: #22242a;
+  --max-w: 720px;
+  font-size: 17px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Nav ---- */
+nav.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  padding: 1rem 1.25rem;
+  background: rgba(11, 12, 14, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+nav.site-nav a {
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+nav.site-nav a:hover,
+nav.site-nav a.current { color: var(--text); text-decoration: none; }
+nav.site-nav a.sailing { color: var(--accent); }
+nav.site-nav a.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  color: var(--bg) !important;
+  background: var(--accent);
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none !important;
+}
+nav.site-nav a.nav-cta:hover { background: var(--accent-hover); }
+
+/* ---- Layout ---- */
+main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+section {
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+section:last-of-type { border-bottom: none; }
+
+section > h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin: 0 0 2rem;
+}
+
+/* ---- Hero ---- */
+#hero {
+  padding-top: 5rem;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#hero img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+#hero .intro { flex: 1; min-width: 260px; }
+#hero h1 {
+  font-size: 2.1rem;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+#hero p { color: var(--text-dim); margin: 0 0 0.75rem; }
+#hero p:last-child { margin-bottom: 0; }
+
+/* ---- Project cards ---- */
+.project {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px dashed var(--border);
+}
+.project:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+.project h3 {
+  font-size: 1.15rem;
+  margin: 0 0 0.25rem;
+}
+.project .meta {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.85rem;
+}
+.project p { margin: 0 0 0.85rem; }
+.project img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+  margin: 0.5rem 0 1rem;
+}
+.project img + img { margin-top: -0.5rem; }
+.project video {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+  margin: 0.5rem 0 1rem;
+}
+.project ul { padding-left: 1.1rem; margin: 0.5rem 0 0.85rem; color: var(--text-dim); }
+.project .links { font-size: 0.9rem; }
+.project .links a { margin-right: 1rem; }
+
+/* ---- CV ---- */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent) !important;
+  text-decoration: none !important;
+  font-size: 0.95rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.btn:hover { background: var(--accent); color: var(--bg) !important; }
+
+/* ---- Contact ---- */
+#contact .email {
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+#contact .note { color: var(--text-dim); font-size: 0.9rem; }
+
+/* ---- Footer ---- */
+footer {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+}
+footer a { color: var(--text-dim); }
+footer a:hover { color: var(--text); }
+
+/* ---- Reveal-on-scroll ---- */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 480px) {
+  :root { font-size: 16px; }
+  #hero { flex-direction: column; text-align: center; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}

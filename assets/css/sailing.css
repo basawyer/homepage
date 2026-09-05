@@ -1,0 +1,127 @@
+/* Sailing log — sticky header + vertical timeline */
+
+.log-header {
+  position: sticky;
+  top: var(--nav-h, 56px); /* set at runtime to the nav's real height */
+  z-index: 40;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 1.25rem 1.75rem;
+}
+.log-header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+.log-header h1 { margin: 0 0 0.25rem; font-size: 1.6rem; }
+.log-header .subtitle { margin: 0 0 1.25rem; color: var(--text-dim); font-size: 0.9rem; }
+
+.log-detail .state-chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  margin-bottom: 0.6rem;
+}
+.log-detail .date-line {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.log-detail .place-line { color: var(--text-dim); margin-bottom: 0.85rem; }
+.log-detail .viewing-note {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 0.85rem;
+}
+.log-detail .viewing-note a { margin-left: 0.5rem; }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+.stat {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+}
+.stat .label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin-bottom: 0.2rem;
+}
+.stat .value { font-size: 1.05rem; font-weight: 600; }
+
+.notable {
+  font-size: 0.9rem;
+  color: var(--text);
+  background: rgba(79, 141, 253, 0.1);
+  border-left: 3px solid var(--accent);
+  padding: 0.6rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+.log-note { font-size: 0.9rem; color: var(--text-dim); }
+
+/* ---- Timeline ---- */
+.timeline-section { padding-top: 3rem; }
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-entry {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+.timeline-entry:last-child { padding-bottom: 0; }
+.timeline-entry .dot {
+  position: absolute;
+  left: -2rem;
+  top: 0.15rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--text-dim);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+.timeline-entry .dot:hover { border-color: var(--accent); transform: scale(1.15); }
+.timeline-entry.selected .dot,
+.timeline-entry.latest .dot {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.timeline-entry button.entry-link {
+  background: none;
+  border: none;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+}
+.timeline-entry button.entry-link:hover .entry-date { color: var(--accent); }
+.timeline-entry .entry-date { font-weight: 600; }
+.timeline-entry .entry-summary { color: var(--text-dim); font-size: 0.9rem; margin-top: 0.15rem; }
+.timeline-entry.selected .entry-date { color: var(--accent); }
+
+.loading { color: var(--text-dim); font-size: 0.9rem; }

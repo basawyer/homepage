@@ -4,8 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Sailing — Blake Sawyer</title>
-<meta name="description" content="SV Sharlie — a 1981 Gulfstar 44 center cockpit sloop." />
+<meta name="description" content="SV Sharlie — a 1981 Gulfstar 44 center cockpit sloop. Live log." />
 <link rel="stylesheet" href="../assets/css/style.css" />
+<link rel="stylesheet" href="../assets/css/sailing.css" />
 </head>
 <body>
 
@@ -18,19 +19,22 @@
   <a href="../assets/files/Blake-Sawyer-CV.pdf" class="nav-cta">Download CV</a>
 </nav>
 
-<main>
-  <section id="hero" style="padding-top:4rem;">
-    <div class="intro">
-      <h1>SV Sharlie</h1>
-      <p>A 1981 Gulfstar 44 center cockpit sloop. This page is placeholder — it will update
-        itself automatically from the boat's onboard SignalK feed: position, conditions, and
-        the log.</p>
+<header id="log-header" class="log-header">
+  <div class="log-header-inner">
+    <h1>SV Sharlie</h1>
+    <p class="subtitle">A 1981 Gulfstar 44 center cockpit sloop. Live log, updated from the boat.</p>
+    <div id="log-detail" class="log-detail">
+      <p class="loading">Loading the log…</p>
     </div>
-  </section>
+  </div>
+</header>
 
-  <section class="reveal">
-    <h2>Status</h2>
-    <p style="color:var(--text-dim);">Live data wiring not yet connected. Coming next.</p>
+<main>
+  <section class="timeline-section">
+    <h2>Log</h2>
+    <div id="timeline" class="timeline">
+      <p class="loading">Loading entries…</p>
+    </div>
   </section>
 </main>
 
@@ -40,5 +44,6 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/sailing.js"></script>
 </body>
 </html>

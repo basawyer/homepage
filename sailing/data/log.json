@@ -2,6 +2,356 @@
   "vessel": "SV Sharlie",
   "entries": [
     {
+      "date": "2023-07-01",
+      "updatedAt": "2023-07-01T12:00:00Z",
+      "state": "marina",
+      "position": {
+        "lat": 36.8414,
+        "lon": -76.2981
+      },
+      "place": "Portsmouth, VA",
+      "logNm": null,
+      "note": "In a slip for the summer. Planned a haul-out to update instruments.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2023-08-20",
+      "updatedAt": "2023-08-20T12:00:00Z",
+      "state": "hauled",
+      "position": {
+        "lat": 36.8425,
+        "lon": -76.2995
+      },
+      "place": "Portsmouth, VA",
+      "logNm": null,
+      "note": "Hauled out to update instruments.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2023-10-01",
+      "updatedAt": "2023-10-01T12:00:00Z",
+      "state": "marina",
+      "position": {
+        "lat": 36.8414,
+        "lon": -76.2981
+      },
+      "place": "Portsmouth, VA",
+      "logNm": null,
+      "note": "Back in the slip after the haul-out.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2023-11-01",
+      "updatedAt": "2023-11-01T12:00:00Z",
+      "state": "marina",
+      "position": {
+        "lat": 34.715,
+        "lon": -76.6636
+      },
+      "place": "Beaufort, NC",
+      "logNm": null,
+      "note": "Stopped in Beaufort to pick up crew for the run south to Miami.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2023-11-13",
+      "updatedAt": "2023-11-13T12:00:00Z",
+      "state": "marina",
+      "position": {
+        "lat": 34.715,
+        "lon": -76.6636
+      },
+      "place": "Beaufort, NC",
+      "logNm": null,
+      "note": "Casting off for Miami with crew.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2023-11-15",
+      "updatedAt": "2023-11-15T12:00:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 25.7275,
+        "lon": -80.238
+      },
+      "place": "Miami, FL",
+      "logNm": null,
+      "note": "Arrived Miami. On a mooring ball.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2023-12-10",
+      "updatedAt": "2023-12-10T12:00:00Z",
+      "state": "hauled",
+      "position": {
+        "lat": 25.73,
+        "lon": -80.24
+      },
+      "place": "Miami, FL",
+      "logNm": null,
+      "note": "Storm broke the mooring ball and damaged the boat \u2014 hauled out for repairs.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-01-20",
+      "updatedAt": "2024-01-20T12:00:00Z",
+      "state": "marina",
+      "position": {
+        "lat": 25.728,
+        "lon": -80.2365
+      },
+      "place": "Miami, FL",
+      "logNm": null,
+      "note": "Repairs finished; waiting on a weather window for the Bahamas.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-02-15",
+      "updatedAt": "2024-02-15T12:00:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 25.2455,
+        "lon": -77.5458
+      },
+      "place": "Chub Cay, Bahamas",
+      "logNm": null,
+      "note": "Arrived in the Bahamas.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-03-01",
+      "updatedAt": "2024-03-01T12:00:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 25.5458,
+        "lon": -76.7611
+      },
+      "place": "Spanish Wells, Bahamas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-03-15",
+      "updatedAt": "2024-03-15T12:00:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 24.8647,
+        "lon": -76.162
+      },
+      "place": "Rock Sound, Eleuthera",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-03-17",
+      "updatedAt": "2024-03-17T12:00:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 24.5945,
+        "lon": -76.8205
+      },
+      "place": "Norman's Cay, Exumas",
+      "logNm": null,
+      "note": "Crossed over to the Exumas.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-04-01",
+      "updatedAt": "2024-04-01T12:00:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 24.1805,
+        "lon": -76.441
+      },
+      "place": "Staniel Cay, Exumas",
+      "logNm": null,
+      "note": "Settled in at Staniel Cay for April.",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
+      "date": "2024-04-20",
+      "updatedAt": "2024-04-20T12:00:00Z",
+      "state": "anchored",
+      "position": {
+        "lat": 24.178,
+        "lon": -76.4395
+      },
+      "place": "Staniel Cay, Exumas",
+      "logNm": null,
+      "note": "",
+      "weather": {
+        "avgWindKt": null,
+        "maxGustKt": null,
+        "minTempC": null,
+        "maxTempC": null,
+        "rainMm": null,
+        "notable": null
+      },
+      "battery": {
+        "socPercent": null,
+        "solarProducing": null
+      },
+      "photos": []
+    },
+    {
       "date": "2024-05-07",
       "updatedAt": "2024-05-07T18:51:48Z",
       "state": "anchored",

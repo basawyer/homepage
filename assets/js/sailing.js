@@ -278,7 +278,7 @@
       '<div class="status-conditions">' +
         '<div class="status-metric"><span class="label">Wind</span><span class="value">' + esc(wind) + "</span></div>" +
         '<div class="status-metric"><span class="label">Temp</span><span class="value">' + esc(temp) + "</span></div>" +
-        '<div class="status-metric"><span class="label">Distance</span><span class="value">' + esc(distance) + "</span></div>" +
+        '<div class="status-metric"><span class="label">Total Distance</span><span class="value">' + esc(distance) + "</span></div>" +
       "</div>" +
       (updated ? '<p class="status-updated">Updated ' + esc(updated) + "</p>" : "");
 

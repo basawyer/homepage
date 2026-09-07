@@ -286,8 +286,12 @@
     content.hidden = false;
   }
 
+  function bust(url) {
+    return url + (url.indexOf("?") >= 0 ? "&" : "?") + "_=" + Date.now();
+  }
+
   function loadStatus() {
-    return fetch(STATUS_URL)
+    return fetch(bust(STATUS_URL), { cache: "no-store" })
       .then(function(r) {
         if (!r.ok) throw new Error("status HTTP " + r.status);
         return r.json();
@@ -308,7 +312,7 @@
   window.addEventListener("load", function() {
     setStatus("Loading log…");
     loadStatus();
-    fetch(LOG_URL)
+    fetch(bust(LOG_URL), { cache: "no-store" })
       .then(function(r) {
         if (!r.ok) throw new Error("log HTTP " + r.status);
         return r.json();

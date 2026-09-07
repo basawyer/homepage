@@ -133,6 +133,13 @@ body.sailing-page .site-nav { z-index: 50; }
   font-size: 0.68rem;
   color: var(--text-dim);
 }
+.status-agent-note {
+  margin: 1rem 0 0;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  max-width: 22rem;
+}
 
 .map-shell {
   position: relative;

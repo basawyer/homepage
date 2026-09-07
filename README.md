@@ -30,6 +30,10 @@ The sailing log itself is **not** served from Pages anymore. It lives in Cloudfl
 can overwrite it without a git deploy. `assets/js/sailing.js` fetches that URL. Keep a local
 copy in `sailing/data/log.json` only as a backup/seed for the bucket.
 
+OpenClaw skill to append/upload entries: `openclaw-skills/sharlie-log/` — install with
+`openclaw skills install ./openclaw-skills/sharlie-log --as sharlie-log` after setting the
+R2 env vars documented in that skill's `SKILL.md`.
+
 If the map shows "Could not load the log," the R2 bucket likely needs a CORS rule allowing
 GET from `https://blakesawyer.net` and `http://127.0.0.1:8088`.
 

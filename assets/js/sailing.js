@@ -6,9 +6,17 @@
     return d.toLocaleDateString("en-US", { weekday:"short", month:"short", day:"numeric", year:"numeric", timeZone:"UTC" });
   }
 
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
   var entries = [];
   var map, trackLine;
-  var markers = [];   // parallel to entries[]
+  var markers = [];
   var selected = -1;
 
   /* Free from https://carto.com/basemaps/apikey/ — no account, 5M tiles/month.
@@ -19,8 +27,10 @@
   var SAME_PLACE_NM = 3;
   var DOT_MIN_PX = 8;
   var DOT_MAX_PX = 28;
-  /* Longest stay that still grows the dot; anything longer is max size */
   var DOT_CAP_DAYS = 60;
+
+  /* Live log lives in Cloudflare R2 (updated without a Pages deploy). */
+  var LOG_URL = "https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/sailing-log.json";
 
   function parseDay(s) {
     return new Date(s + "T00:00:00Z");
@@ -43,12 +53,9 @@
   }
 
   function todayISO() {
-    var d = new Date();
-    return d.toISOString().slice(0, 10);
+    return new Date().toISOString().slice(0, 10);
   }
 
-  /* Days on station for each entry: consecutive logs within SAME_PLACE_NM
-     share the span from first log until the next log that left (or today). */
   function stayDays(ents) {
     var days = new Array(ents.length);
     var i = 0;
@@ -78,7 +85,90 @@
     return years + (years === 1 ? " year" : " years") + " here";
   }
 
-  /* ── Map setup ─────────────────────────────────────── */
+  /* Initial bearing from a→b in degrees (0 = north, clockwise). */
+  function bearingDeg(a, b) {
+    var toRad = function(d) { return d * Math.PI / 180; };
+    var lat1 = toRad(a[0]);
+    var lat2 = toRad(b[0]);
+    var dLon = toRad(b[1] - a[1]);
+    var y = Math.sin(dLon) * Math.cos(lat2);
+    var x = Math.cos(lat1) * Math.sin(lat2) -
+      Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  }
+
+  /* Place chevrons along the track so direction of travel is readable. */
+  var ARROW_EVERY_NM = 80;
+  var ARROW_MIN_SEG_NM = 8;
+
+  function addTrackArrows(coords) {
+    var since = 0;
+    for (var i = 1; i < coords.length; i++) {
+      var a = { lat: coords[i - 1][0], lon: coords[i - 1][1] };
+      var b = { lat: coords[i][0], lon: coords[i][1] };
+      var seg = distNm(a, b);
+      since += seg;
+      // Skip harbor hops; place a chevron after ~ARROW_EVERY_NM of travel
+      if (seg < ARROW_MIN_SEG_NM || since < ARROW_EVERY_NM) continue;
+      since = 0;
+
+      var mid = [(coords[i - 1][0] + coords[i][0]) / 2, (coords[i - 1][1] + coords[i][1]) / 2];
+      var deg = bearingDeg(coords[i - 1], coords[i]);
+      var icon = L.divIcon({
+        className: "track-arrow-wrap",
+        html: '<div class="track-arrow" style="transform:rotate(' + deg.toFixed(1) + 'deg)"></div>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7]
+      });
+      L.marker(mid, { icon: icon, interactive: false, keyboard: false, zIndexOffset: -100 }).addTo(map);
+    }
+  }
+
+  function popupStat(label, value) {
+    return '<div class="popup-stat"><span class="label">' + esc(label) +
+      '</span><span class="value">' + esc(value) + "</span></div>";
+  }
+
+  function popupHtml(e, days) {
+    var w = e.weather || {};
+    var b = e.battery || {};
+    var html = "";
+    html += '<div class="popup-date">' + esc(fmtDate(e.date)) + "</div>";
+    html += '<div class="popup-place">' + esc(e.place) + "</div>";
+    html += '<span class="state-chip">' + esc(STATE_LABELS[e.state] || e.state) + "</span>";
+    html += '<div class="popup-stay">' + esc(fmtStay(days)) + "</div>";
+    if (e.note) html += '<div class="popup-note">' + esc(e.note) + "</div>";
+    if (w.notable) html += '<div class="popup-notable">' + esc(w.notable) + "</div>";
+
+    var stats = "";
+    if (typeof w.avgWindKt === "number")
+      stats += popupStat("Avg wind", w.avgWindKt.toFixed(1) + " kt");
+    if (typeof w.maxGustKt === "number")
+      stats += popupStat("Max gust", w.maxGustKt.toFixed(1) + " kt");
+    if (typeof w.rainMm === "number")
+      stats += popupStat("Rain", w.rainMm.toFixed(1) + " mm");
+    if (typeof w.minTempC === "number")
+      stats += popupStat("Temp", Math.round(w.minTempC) + "–" + Math.round(w.maxTempC) + "°C");
+    if (typeof e.logNm === "number")
+      stats += popupStat("Log", e.logNm.toFixed(0) + " nm");
+    if (typeof b.socPercent === "number")
+      stats += popupStat("Battery", b.socPercent + "%" + (b.solarProducing ? " ☀" : ""));
+    if (stats) html += '<div class="popup-stats">' + stats + "</div>";
+    return html;
+  }
+
+  function setStatus(msg) {
+    var el = document.getElementById("map-status");
+    if (!el) return;
+    if (!msg) {
+      el.hidden = true;
+      el.textContent = "";
+      return;
+    }
+    el.hidden = false;
+    el.textContent = msg;
+  }
+
   function initMap(ents) {
     map = L.map("map", { zoomControl: true, attributionControl: true });
 
@@ -91,13 +181,12 @@
       maxZoom: 19
     }).addTo(map);
 
-    // Track line
     var coords = ents.map(function(e){ return [e.position.lat, e.position.lon]; });
     trackLine = L.polyline(coords, { color: "rgba(76,192,168,0.45)", weight: 2, dashArray: "4 4" }).addTo(map);
+    addTrackArrows(coords);
 
     var dwell = stayDays(ents);
 
-    // Markers — one per entry, sized by time on station
     ents.forEach(function(e, i) {
       var px = dotSize(dwell[i]);
       var icon = L.divIcon({
@@ -108,104 +197,29 @@
         popupAnchor: [0, -px / 2 - 4]
       });
       var m = L.marker([e.position.lat, e.position.lon], { icon: icon, zIndexOffset: px });
-      m.bindPopup(
-        '<div class="popup-date">' + fmtDate(e.date) + '</div>' +
-        '<div class="popup-place">' + e.place + '</div>' +
-        '<div class="popup-stay">' + fmtStay(dwell[i]) + '</div>'
-      );
-      m.on("click", function() { selectEntry(i, false); });
+      m.bindPopup(popupHtml(e, dwell[i]), { maxWidth: 300 });
+      m.on("click", function() { selectEntry(i); });
       m.addTo(map);
       markers.push(m);
     });
 
-    map.fitBounds(trackLine.getBounds(), { padding: [30, 30] });
+    map.fitBounds(trackLine.getBounds(), { padding: [40, 40] });
   }
 
-  /* ── Timeline ───────────────────────────────────────── */
-  function stat(label, value) {
-    return '<div class="stat"><span class="label">' + label + '</span><span class="value">' + value + "</span></div>";
-  }
-
-  function entryDetailHtml(e) {
-    var w = e.weather || {};
-    var b = e.battery || {};
-    var html = "";
-    html += '<span class="dot"></span>';
-    html += '<div class="entry-date">' + fmtDate(e.date) + "</div>";
-    html += '<div class="entry-place">' + e.place + "</div>";
-    html += '<span class="state-chip">' + (STATE_LABELS[e.state] || e.state) + "</span>";
-    if (e.note) html += '<div class="entry-note">' + e.note + "</div>";
-    if (w.notable) html += '<div class="notable">' + w.notable + "</div>";
-
-    var stats = "";
-    if (typeof w.avgWindKt === "number")
-      stats += stat("Avg wind", w.avgWindKt.toFixed(1) + " kt");
-    if (typeof w.maxGustKt === "number")
-      stats += stat("Max gust", w.maxGustKt.toFixed(1) + " kt");
-    if (typeof w.rainMm === "number")
-      stats += stat("Rain", w.rainMm.toFixed(1) + " mm");
-    if (typeof w.minTempC === "number")
-      stats += stat("Temp", Math.round(w.minTempC) + "–" + Math.round(w.maxTempC) + "°C");
-    if (typeof e.logNm === "number")
-      stats += stat("Log", e.logNm.toFixed(0) + " nm");
-    if (typeof b.socPercent === "number")
-      stats += stat("Battery", b.socPercent + "%" + (b.solarProducing ? " ☀" : ""));
-    if (stats) html += '<div class="stat-grid">' + stats + "</div>";
-    return html;
-  }
-
-  function renderTimeline(ents) {
-    var el = document.getElementById("timeline");
-    el.innerHTML = "";
-    // Newest first
-    for (var i = ents.length - 1; i >= 0; i--) {
-      (function(idx) {
-        var e = ents[idx];
-        var row = document.createElement("div");
-        row.className = "timeline-entry" + (idx === ents.length - 1 ? " latest" : "");
-        row.dataset.idx = idx;
-        row.innerHTML = entryDetailHtml(e);
-        row.addEventListener("click", function() { selectEntry(idx, true); });
-        el.appendChild(row);
-      })(i);
+  function selectEntry(idx) {
+    if (idx === selected) {
+      markers[idx].openPopup();
+      return;
     }
-  }
-
-  /* ── Selection — the single source of truth ─────────── */
-  function selectEntry(idx, flyMap) {
-    if (idx === selected) return;
     selected = idx;
-    var e = entries[idx];
-
-    // Update timeline highlight + scroll the row into view
-    document.querySelectorAll(".timeline-entry").forEach(function(el) {
-      el.classList.toggle("selected", Number(el.dataset.idx) === idx);
-    });
-    var row = document.querySelector('.timeline-entry[data-idx="' + idx + '"]');
-    if (row) row.scrollIntoView({ block: "nearest", behavior: "smooth" });
-
-    // Update map markers
     document.querySelectorAll(".map-dot").forEach(function(el) {
       el.classList.toggle("selected", Number(el.dataset.idx) === idx);
     });
-
-    // Pan/fly map
-    if (map) {
-      var latlng = [e.position.lat, e.position.lon];
-      if (flyMap) {
-        map.flyTo(latlng, Math.max(map.getZoom(), 9), { duration: 0.8 });
-      } else {
-        map.panTo(latlng);
-      }
-      markers[idx].openPopup();
-    }
+    markers[idx].openPopup();
   }
 
-  /* Live log lives in Cloudflare R2 (updated without a Pages deploy). */
-  var LOG_URL = "https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/sailing-log.json";
-
-  /* ── Bootstrap ──────────────────────────────────────── */
   window.addEventListener("load", function() {
+    setStatus("Loading log…");
     fetch(LOG_URL)
       .then(function(r) {
         if (!r.ok) throw new Error("log HTTP " + r.status);
@@ -214,15 +228,15 @@
       .then(function(data) {
         entries = (data.entries || []).slice();
         if (!entries.length) {
-          document.getElementById("timeline").innerHTML = '<p class="dim">No log entries yet.</p>';
+          setStatus("No log entries yet.");
           return;
         }
-        renderTimeline(entries);
+        setStatus("");
         initMap(entries);
-        selectEntry(entries.length - 1, false);
+        selectEntry(entries.length - 1);
       })
       .catch(function(err) {
-        document.getElementById("timeline").innerHTML = '<p class="dim">Could not load the log.</p>';
+        setStatus("Could not load the log.");
         console.error(err);
       });
   });

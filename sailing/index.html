@@ -31,22 +31,9 @@
   </div>
 </header>
 
-<div class="log-layout">
-
-  <!-- LEFT COLUMN: timeline -->
-  <div class="log-left">
-    <div class="timeline-scroll" id="timeline-scroll">
-      <div class="timeline" id="timeline">
-        <p class="dim">Loading…</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHT COLUMN: map -->
-  <div class="log-right">
-    <div id="map"></div>
-  </div>
-
+<div class="map-shell">
+  <div id="map"></div>
+  <p id="map-status" class="map-status dim" hidden></p>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

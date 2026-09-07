@@ -22,9 +22,16 @@ Then open http://127.0.0.1:8088/
 ## Deploy
 
 Hosted on Cloudflare Pages at blakesawyer.net, built from the `main` branch of this repo.
-There is no build step — build command is empty, output directory is `/`. Every push to
-`main` deploys, which includes the boat's commits to `sailing/data/log.json`, so new log
-entries go live on their own. `_headers` keeps that file from being cached stale.
+There is no build step — build command is empty, output directory is `/`. Pushing `main`
+deploys the site.
+
+The sailing log itself is **not** served from Pages anymore. It lives in Cloudflare R2 at
+`https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/sailing-log.json` so OpenClaw (or you)
+can overwrite it without a git deploy. `assets/js/sailing.js` fetches that URL. Keep a local
+copy in `sailing/data/log.json` only as a backup/seed for the bucket.
+
+If the map shows "Could not load the log," the R2 bucket likely needs a CORS rule allowing
+GET from `https://blakesawyer.net` and `http://127.0.0.1:8088`.
 
 ## Map tiles
 

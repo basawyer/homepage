@@ -201,10 +201,16 @@
     }
   }
 
+  /* Live log lives in Cloudflare R2 (updated without a Pages deploy). */
+  var LOG_URL = "https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/sailing-log.json";
+
   /* ── Bootstrap ──────────────────────────────────────── */
   window.addEventListener("load", function() {
-    fetch("data/log.json")
-      .then(function(r) { return r.json(); })
+    fetch(LOG_URL)
+      .then(function(r) {
+        if (!r.ok) throw new Error("log HTTP " + r.status);
+        return r.json();
+      })
       .then(function(data) {
         entries = (data.entries || []).slice();
         if (!entries.length) {

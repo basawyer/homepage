@@ -31,9 +31,17 @@
   </div>
 </header>
 
-<div class="map-shell">
-  <div id="map"></div>
-  <p id="map-status" class="map-status dim" hidden></p>
+<div class="log-layout">
+  <aside class="status-panel" id="status-panel" aria-live="polite">
+    <p class="status-eyebrow">Live status</p>
+    <p class="dim" id="status-loading">Loading…</p>
+    <div id="status-content" hidden></div>
+  </aside>
+
+  <div class="map-shell">
+    <div id="map"></div>
+    <p id="map-status" class="map-status dim" hidden></p>
+  </div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

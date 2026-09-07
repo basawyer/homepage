@@ -29,8 +29,9 @@
   var DOT_MAX_PX = 28;
   var DOT_CAP_DAYS = 60;
 
-  /* Live log lives in Cloudflare R2 (updated without a Pages deploy). */
+  /* Live data lives in Cloudflare R2 (updated without a Pages deploy). */
   var LOG_URL = "https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/sailing-log.json";
+  var STATUS_URL = "https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/boat-status.json";
 
   function parseDay(s) {
     return new Date(s + "T00:00:00Z");
@@ -218,8 +219,66 @@
     markers[idx].openPopup();
   }
 
+  function fmtUpdated(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return "";
+    return d.toLocaleString("en-US", {
+      month: "short", day: "numeric", year: "numeric",
+      hour: "numeric", minute: "2-digit", timeZoneName: "short"
+    });
+  }
+
+  function renderStatus(status) {
+    var loading = document.getElementById("status-loading");
+    var content = document.getElementById("status-content");
+    if (!content) return;
+
+    if (!status) {
+      if (loading) loading.textContent = "Could not load live status.";
+      return;
+    }
+
+    var wind = status.conditions && typeof status.conditions.windKt === "number"
+      ? status.conditions.windKt.toFixed(0) + " kt"
+      : "—";
+    var temp = status.conditions && typeof status.conditions.tempC === "number"
+      ? Math.round(status.conditions.tempC) + "°C"
+      : "—";
+    var updated = fmtUpdated(status.updatedAt);
+
+    content.innerHTML =
+      '<div class="status-place">' + esc(status.place || "Unknown location") + "</div>" +
+      '<span class="state-chip">' + esc(STATE_LABELS[status.state] || status.state || "—") + "</span>" +
+      (status.activity
+        ? '<p class="status-activity">' + esc(status.activity) + "</p>"
+        : "") +
+      '<div class="status-conditions">' +
+        '<div class="status-metric"><span class="label">Wind</span><span class="value">' + esc(wind) + "</span></div>" +
+        '<div class="status-metric"><span class="label">Temp</span><span class="value">' + esc(temp) + "</span></div>" +
+      "</div>" +
+      (updated ? '<p class="status-updated">Updated ' + esc(updated) + "</p>" : "");
+
+    if (loading) loading.hidden = true;
+    content.hidden = false;
+  }
+
+  function loadStatus() {
+    return fetch(STATUS_URL)
+      .then(function(r) {
+        if (!r.ok) throw new Error("status HTTP " + r.status);
+        return r.json();
+      })
+      .then(renderStatus)
+      .catch(function(err) {
+        console.error(err);
+        renderStatus(null);
+      });
+  }
+
   window.addEventListener("load", function() {
     setStatus("Loading log…");
+    loadStatus();
     fetch(LOG_URL)
       .then(function(r) {
         if (!r.ok) throw new Error("log HTTP " + r.status);
@@ -233,7 +292,7 @@
         }
         setStatus("");
         initMap(entries);
-        selectEntry(entries.length - 1);
+        setTimeout(function() { if (map) map.invalidateSize(); }, 0);
       })
       .catch(function(err) {
         setStatus("Could not load the log.");

@@ -25,16 +25,18 @@ Hosted on Cloudflare Pages at blakesawyer.net, built from the `main` branch of t
 There is no build step — build command is empty, output directory is `/`. Pushing `main`
 deploys the site.
 
-The sailing log itself is **not** served from Pages anymore. It lives in Cloudflare R2 at
-`https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/sailing-log.json` so OpenClaw (or you)
-can overwrite it without a git deploy. `assets/js/sailing.js` fetches that URL. Keep a local
-copy in `sailing/data/log.json` only as a backup/seed for the bucket.
+The sailing log itself is **not** served from Pages anymore. Live data lives in Cloudflare R2:
 
-OpenClaw skill to append/upload entries: `openclaw-skills/sharlie-log/` — install with
+- Log (map track): `https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/sailing-log.json`
+- Status (left panel): `https://pub-e637401be00045af940050b2f0eeaacf.r2.dev/boat-status.json`
+
+`assets/js/sailing.js` fetches both. Local seeds/backups live in `sailing/data/`.
+
+OpenClaw skill to append/upload log entries: `openclaw-skills/sharlie-log/` — install with
 `openclaw skills install ./openclaw-skills/sharlie-log --as sharlie-log` after setting the
 R2 env vars documented in that skill's `SKILL.md`.
 
-If the map shows "Could not load the log," the R2 bucket likely needs a CORS rule allowing
+If the map or status panel fails to load, the R2 bucket likely needs a CORS rule allowing
 GET from `https://blakesawyer.net` and `http://127.0.0.1:8088`.
 
 ## Map tiles

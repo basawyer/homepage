@@ -1,0 +1,14 @@
+{
+  "updatedAt": "2026-09-07T16:00:00Z",
+  "place": "Chaguaramas, Trinidad & Tobago",
+  "state": "hauled",
+  "activity": "On the hard for rudder stuffing box repairs.",
+  "position": {
+    "lat": 10.6834,
+    "lon": -61.6373
+  },
+  "conditions": {
+    "windKt": 14,
+    "tempC": 30
+  }
+}

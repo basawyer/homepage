@@ -33,6 +33,10 @@ The sailing map uses CARTO's `dark_all` basemap, which needs a key or CARTO writ
 (no account, 5M tiles/month) — drop yours into `CARTO_KEY` at the top of
 `assets/js/sailing.js`. CARTO and OpenStreetMap attribution must stay visible.
 
+Like any browser map key this one ships in the page, so it is public by design. It is not
+currently bound to a referer — the same key serves clean tiles from any domain — so if the
+monthly quota ever gets burned by someone else, ask CARTO for a domain-restricted key.
+
 ## Design
 
 Dark background, single accent color, one scrolling page. Nav bar is sticky; most links

@@ -111,6 +111,17 @@ section > h2 {
 #hero p { color: var(--text-dim); margin: 0 0 0.75rem; }
 #hero p:last-child { margin-bottom: 0; }
 
+/* Figure that frames a whole section, ahead of the project cards */
+.section-intro-img {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  display: block;
+  margin: 0 0 2.5rem;
+}
+
 /* ---- Project cards ---- */
 .project {
   margin-bottom: 3rem;

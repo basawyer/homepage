@@ -105,9 +105,9 @@ body.sailing-page .site-nav { z-index: 50; }
 }
 .status-conditions {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.45rem;
-  max-width: 18rem;
+  max-width: 22rem;
 }
 .status-metric {
   background: var(--bg-raised);

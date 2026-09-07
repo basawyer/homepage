@@ -18,6 +18,9 @@
   var map, trackLine;
   var markers = [];
   var selected = -1;
+  var latestStatus = null;
+  var statusLoaded = false;
+  var totalTrackNm = null;
 
   /* Free from https://carto.com/basemaps/apikey/ — no account, 5M tiles/month.
      Left empty, CARTO writes "API KEY REQUIRED" across every tile. */
@@ -219,6 +222,15 @@
     markers[idx].openPopup();
   }
 
+  function trackNm(ents) {
+    var total = 0;
+    for (var i = 1; i < ents.length; i++) {
+      if (!ents[i - 1].position || !ents[i].position) continue;
+      total += distNm(ents[i - 1].position, ents[i].position);
+    }
+    return total;
+  }
+
   function fmtUpdated(iso) {
     if (!iso) return "";
     var d = new Date(iso);
@@ -229,21 +241,31 @@
     });
   }
 
-  function renderStatus(status) {
+  function renderStatus() {
     var loading = document.getElementById("status-loading");
     var content = document.getElementById("status-content");
     if (!content) return;
 
-    if (!status) {
-      if (loading) loading.textContent = "Could not load live status.";
+    if (!statusLoaded) return;
+
+    if (!latestStatus) {
+      if (loading) {
+        loading.hidden = false;
+        loading.textContent = "Could not load live status.";
+      }
+      content.hidden = true;
       return;
     }
 
+    var status = latestStatus;
     var wind = status.conditions && typeof status.conditions.windKt === "number"
       ? status.conditions.windKt.toFixed(0) + " kt"
       : "—";
     var temp = status.conditions && typeof status.conditions.tempC === "number"
       ? Math.round(status.conditions.tempC) + "°C"
+      : "—";
+    var distance = totalTrackNm != null
+      ? Math.round(totalTrackNm).toLocaleString("en-US") + " nm"
       : "—";
     var updated = fmtUpdated(status.updatedAt);
 
@@ -256,6 +278,7 @@
       '<div class="status-conditions">' +
         '<div class="status-metric"><span class="label">Wind</span><span class="value">' + esc(wind) + "</span></div>" +
         '<div class="status-metric"><span class="label">Temp</span><span class="value">' + esc(temp) + "</span></div>" +
+        '<div class="status-metric"><span class="label">Distance</span><span class="value">' + esc(distance) + "</span></div>" +
       "</div>" +
       (updated ? '<p class="status-updated">Updated ' + esc(updated) + "</p>" : "");
 
@@ -269,10 +292,16 @@
         if (!r.ok) throw new Error("status HTTP " + r.status);
         return r.json();
       })
-      .then(renderStatus)
+      .then(function(status) {
+        latestStatus = status;
+        statusLoaded = true;
+        renderStatus();
+      })
       .catch(function(err) {
         console.error(err);
-        renderStatus(null);
+        latestStatus = null;
+        statusLoaded = true;
+        renderStatus();
       });
   }
 
@@ -290,6 +319,8 @@
           setStatus("No log entries yet.");
           return;
         }
+        totalTrackNm = trackNm(entries);
+        renderStatus();
         setStatus("");
         initMap(entries);
         setTimeout(function() { if (map) map.invalidateSize(); }, 0);

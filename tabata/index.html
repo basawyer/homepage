@@ -1,0 +1,304 @@
+<<<EXTERNAL_UNTRUSTED_CONTENT id="3cb78e530d83a986">>>
+Source: External
+---
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tabata Timer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: one big phase panel with the countdown, controls under it, four steppers below that. */
+:root {
+  --bg: #f3f4f3;
+  --surface: #ffffff;
+  --fg: #16191a;
+  --muted: #5d6668;
+  --line: #d9dddd;
+  --work: #d9381e;
+  --work-ink: #ffffff;
+  --rest: #0e7c86;
+  --rest-ink: #ffffff;
+  --prep: #b7791f;
+  --prep-ink: #ffffff;
+  --done: #2f6b3a;
+  --done-ink: #ffffff;
+  --idle: #2b3436;
+  --idle-ink: #f3f4f3;
+  --display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1213; --surface: #181c1d; --fg: #eceeee; --muted: #8f999b; --line: #2c3335;
+    --work: #ff5a3c; --work-ink: #1a0803;
+    --rest: #36b9c4; --rest-ink: #04191b;
+    --prep: #e6a93f; --prep-ink: #1d1203;
+    --done: #5fb36e; --done-ink: #07170a;
+    --idle: #222829; --idle-ink: #eceeee;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1213; --surface: #181c1d; --fg: #eceeee; --muted: #8f999b; --line: #2c3335;
+  --work: #ff5a3c; --work-ink: #1a0803;
+  --rest: #36b9c4; --rest-ink: #04191b;
+  --prep: #e6a93f; --prep-ink: #1d1203;
+  --done: #5fb36e; --done-ink: #07170a;
+  --idle: #222829; --idle-ink: #eceeee;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px;
+  padding-block: 16px 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+main { max-width: 480px; margin: 0 auto; display: grid; gap: 16px; }
+.panel {
+  --p: var(--idle); --pi: var(--idle-ink);
+  background: var(--p); color: var(--pi); border-radius: 20px; padding: 22px 20px 20px;
+  display: grid; gap: 6px; text-align: center; transition: background .25s;
+}
+.panel[data-phase="prep"] { --p: var(--prep); --pi: var(--prep-ink); }
+.panel[data-phase="work"] { --p: var(--work); --pi: var(--work-ink); }
+.panel[data-phase="rest"] { --p: var(--rest); --pi: var(--rest-ink); }
+.panel[data-phase="done"] { --p: var(--done); --pi: var(--done-ink); }
+.label { font-family: var(--display); font-weight: 700; font-size: 1.6rem; letter-spacing: .18em; text-transform: uppercase; }
+.time { font-family: var(--display); font-weight: 700; font-size: clamp(7rem, 38vw, 11rem); line-height: .95; font-variant-numeric: tabular-nums; }
+.round { font-size: 1rem; font-weight: 600; letter-spacing: .04em; opacity: .9; }
+.bar { height: 8px; border-radius: 4px; background: color-mix(in srgb, var(--pi) 25%, transparent); overflow: hidden; margin-top: 10px; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--pi); }
+.controls { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+button { font: inherit; cursor: pointer; border: 0; color: inherit; }
+button:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
+.go { background: var(--fg); color: var(--bg); font-family: var(--display); font-weight: 700; font-size: 1.7rem; letter-spacing: .12em; text-transform: uppercase; padding: 14px; border-radius: 14px; }
+.reset { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 0 22px; font-weight: 600; }
+.settings { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 4px 16px; display: grid; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row b { font-weight: 600; }
+.row small { display: block; color: var(--muted); font-size: .8rem; }
+.step { display: flex; align-items: center; gap: 4px; }
+.step button { width: 44px; height: 44px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); font-size: 1.4rem; line-height: 1; }
+.step button:disabled { opacity: .35; cursor: default; }
+.step output { min-width: 3.6ch; text-align: center; font-family: var(--display); font-weight: 700; font-size: 1.8rem; font-variant-numeric: tabular-nums; }
+.seg { display: flex; gap: 4px; }
+.seg button { padding: 10px 12px; min-height: 44px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line); font-weight: 600; font-size: .9rem; }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.total { color: var(--muted); font-size: .9rem; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .panel { transition: none; } }
+</style>
+
+<main>
+  <section class="panel" id="panel" data-phase="idle" aria-live="off">
+    <div class="label" id="label">Ready</div>
+    <div class="time" id="time">20</div>
+    <div class="round" id="round">8 rounds · 20 s work / 10 s rest</div>
+    <div class="bar"><i id="fill"></i></div>
+  </section>
+
+  <div class="controls">
+    <button class="go" id="go" type="button">Start</button>
+    <button class="reset" id="reset" type="button">Reset</button>
+  </div>
+
+  <section class="settings" aria-label="Timer settings">
+    <div class="row"><div><b>Get ready</b><small>seconds before round 1</small></div>
+      <div class="step"><button type="button" data-k="prep" data-d="-5" aria-label="Decrease get ready">−</button><output id="v-prep">10</output><button type="button" data-k="prep" data-d="5" aria-label="Increase get ready">+</button></div></div>
+    <div class="row"><div><b>Work</b><small>seconds per round</small></div>
+      <div class="step"><button type="button" data-k="work" data-d="-5" aria-label="Decrease work">−</button><output id="v-work">20</output><button type="button" data-k="work" data-d="5" aria-label="Increase work">+</button></div></div>
+    <div class="row"><div><b>Rest</b><small>seconds between rounds</small></div>
+      <div class="step"><button type="button" data-k="rest" data-d="-5" aria-label="Decrease rest">−</button><output id="v-rest">10</output><button type="button" data-k="rest" data-d="5" aria-label="Increase rest">+</button></div></div>
+    <div class="row"><div><b>Rounds</b><small>classic Tabata is 8</small></div>
+      <div class="step"><button type="button" data-k="rounds" data-d="-1" aria-label="Decrease rounds">−</button><output id="v-rounds">8</output><button type="button" data-k="rounds" data-d="1" aria-label="Increase rounds">+</button></div></div>
+    <div class="row"><div><b>Sound</b><small>iPhone: turn off silent mode</small></div>
+      <div class="seg" id="seg"><button type="button" data-m="beeps" aria-pressed="true">Beeps</button><button type="button" data-m="voice" aria-pressed="false">Voice</button><button type="button" data-m="off" aria-pressed="false">Off</button></div></div>
+  </section>
+  <p class="total" id="total"></p>
+</main>
+
+<script>
+(function () {
+  var LIM = { prep: [0, 60], work: [5, 300], rest: [0, 300], rounds: [1, 50] };
+  var cfg = { prep: 10, work: 20, rest: 10, rounds: 8 };
+  try {
+    var s = JSON.parse(localStorage.getItem("tabata-cfg") || "null");
+    if (s) for (var k in cfg) if (typeof s[k] === "number" && s[k] >= LIM[k][0] && s[k] <= LIM[k][1]) cfg[k] = s[k];
+  } catch (e) {}
+
+  var $ = function (id) { return document.getElementById(id); };
+  var panel = $("panel"), label = $("label"), timeEl = $("time"), roundEl = $("round"), fill = $("fill"), go = $("go");
+  var phases = [], idx = 0, status = "idle", endAt = 0, remaining = 0, lastSec = -1, timer = null, ac = null, wake = null;
+
+  function build() {
+    phases = [];
+    if (cfg.prep > 0) phases.push({ t: "prep", s: cfg.prep, r: 0 });
+    for (var i = 1; i <= cfg.rounds; i++) {
+      phases.push({ t: "work", s: cfg.work, r: i });
+      if (cfg.rest > 0 && i < cfg.rounds) phases.push({ t: "rest", s: cfg.rest, r: i });
+    }
+  }
+  function fmt(sec) {
+    var m = Math.floor(sec / 60), r = sec % 60;
+    return m > 0 ? m + ":" + (r < 10 ? "0" : "") + r : String(r);
+  }
+  function summary() {
+    var total = cfg.prep + cfg.work * cfg.rounds + cfg.rest * Math.max(0, cfg.rounds - 1);
+    $("total").textContent = "Total " + fmt(total) + " (" + Math.floor(total / 60) + " min " + (total % 60) + " s)";
+    if (status === "idle") {
+      roundEl.textContent = cfg.rounds + " rounds · " + cfg.work + " s work / " + cfg.rest + " s rest";
+      timeEl.textContent = fmt(cfg.prep > 0 ? cfg.prep : cfg.work);
+      label.textContent = "Ready";
+    }
+  }
+  function renderCfg() {
+    for (var k in cfg) $("v-" + k).textContent = cfg[k];
+    document.querySelectorAll(".step button").forEach(function (b) {
+      var k = b.dataset.k, d = +b.dataset.d, v = cfg[k] + d;
+      b.disabled = status !== "idle" || v < LIM[k][0] || v > LIM[k][1];
+    });
+    summary();
+  }
+
+  var mode = "beeps", silentEl = null;
+  try { var sm = localStorage.getItem("tabata-snd"); if (sm === "beeps" || sm === "voice" || sm === "off") mode = sm; } catch (e) {}
+  function paintMode() {
+    document.querySelectorAll("#seg button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.m === mode)); });
+  }
+  function say(txt) {
+    try {
+      if (!window.speechSynthesis) return;
+      var u = new SpeechSynthesisUtterance(txt); u.rate = 1.1; u.volume = 1;
+      window.speechSynthesis.cancel(); window.speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  // iPhone mutes Web Audio when the silent switch is on; a looping silent clip moves the page to the playback channel.
+  function unlockAudio() {
+    try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+    try {
+      if (!silentEl) {
+        var n = 4000, b = new Uint8Array(44 + n), dv = new DataView(b.buffer);
+        var w = function (o, s) { for (var i = 0; i < s.length; i++) b[o + i] = s.charCodeAt(i); };
+        w(0, "RIFF"); dv.setUint32(4, 36 + n, true); w(8, "WAVEfmt "); dv.setUint32(16, 16, true);
+        dv.setUint16(20, 1, true); dv.setUint16(22, 1, true); dv.setUint32(24, 8000, true); dv.setUint32(28, 8000, true);
+        dv.setUint16(32, 1, true); dv.setUint16(34, 8, true); w(36, "data"); dv.setUint32(40, n, true);
+        for (var i = 0; i < n; i++) b[44 + i] = 128;
+        var bin = ""; for (var j = 0; j < b.length; j++) bin += String.fromCharCode(b[j]);
+        silentEl = new Audio("data:audio/wav;base64," + btoa(bin)); silentEl.loop = true;
+      }
+      silentEl.play().catch(function () {});
+    } catch (e) {}
+  }
+  function beep(freq, ms) {
+    if (!ac || mode === "off") return;
+    try {
+      var o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime;
+      o.type = "sine"; o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.5, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + ms / 1000);
+      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + ms / 1000 + 0.02);
+    } catch (e) {}
+  }
+  function phaseStartSound(p) {
+    if (mode === "off") return;
+    if (mode === "voice") { say(p.t === "work" ? "Work" : p.t === "rest" ? "Rest" : "Get ready"); return; }
+    if (p.t === "work") { beep(1100, 160); setTimeout(function () { beep(1100, 350); }, 220); }
+    else if (p.t === "rest") beep(520, 500);
+    else beep(700, 200);
+  }
+
+  function show(p, secLeft, frac) {
+    panel.dataset.phase = p.t;
+    label.textContent = p.t === "prep" ? "Get ready" : p.t === "work" ? "Work" : "Rest";
+    timeEl.textContent = fmt(secLeft);
+    roundEl.textContent = p.t === "prep" ? cfg.rounds + " rounds coming up" : "Round " + p.r + " of " + cfg.rounds;
+    fill.style.width = Math.max(0, Math.min(100, frac * 100)) + "%";
+  }
+
+  function finish() {
+    clearInterval(timer); timer = null; status = "done";
+    panel.dataset.phase = "done"; label.textContent = "Done"; timeEl.textContent = "✓";
+    roundEl.textContent = cfg.rounds + " rounds complete"; fill.style.width = "100%";
+    go.textContent = "Again"; releaseWake(); renderCfg();
+    if (silentEl) silentEl.pause();
+    if (mode === "voice") say("Done. Great work.");
+    else { beep(880, 200); setTimeout(function () { beep(880, 200); }, 260); setTimeout(function () { beep(1320, 500); }, 520); }
+  }
+
+  function tick() {
+    var now = performance.now();
+    while (endAt - now <= 0) {
+      idx++;
+      if (idx >= phases.length) { finish(); return; }
+      endAt += phases[idx].s * 1000; lastSec = -1; phaseStartSound(phases[idx]);
+    }
+    var p = phases[idx], rem = endAt - now, sec = Math.ceil(rem / 1000);
+    show(p, sec, 1 - rem / (p.s * 1000));
+    if (sec !== lastSec) { lastSec = sec; if (sec >= 1 && sec <= 3) beep(800, 120); }
+  }
+
+  function requestWake() {
+    try { if (navigator.wakeLock) navigator.wakeLock.request("screen").then(function (w) { wake = w; }, function () {}); } catch (e) {}
+  }
+  function releaseWake() { try { if (wake) { wake.release(); wake = null; } } catch (e) {} }
+
+  function start() {
+    if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+    if (ac && ac.state === "suspended") ac.resume();
+    unlockAudio();
+    if (mode === "voice") say("");
+    if (status === "idle" || status === "done") {
+      build(); idx = 0; endAt = performance.now() + phases[0].s * 1000; lastSec = -1; phaseStartSound(phases[0]);
+    } else if (status === "paused") {
+      endAt = performance.now() + remaining;
+    }
+    status = "running"; go.textContent = "Pause"; requestWake(); renderCfg();
+    clearInterval(timer); timer = setInterval(tick, 100); tick();
+  }
+  function pause() {
+    remaining = Math.max(0, endAt - performance.now());
+    clearInterval(timer); timer = null; status = "paused"; go.textContent = "Resume"; releaseWake();
+  }
+  function reset() {
+    clearInterval(timer); timer = null; status = "idle"; idx = 0; releaseWake();
+    if (silentEl) silentEl.pause();
+    try { if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) {}
+    panel.dataset.phase = "idle"; fill.style.width = "0"; go.textContent = "Start"; renderCfg();
+  }
+
+  go.addEventListener("click", function () {
+    if (status === "running") pause(); else start();
+  });
+  $("reset").addEventListener("click", reset);
+  document.querySelectorAll(".step button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var k = b.dataset.k, v = cfg[k] + (+b.dataset.d);
+      if (v < LIM[k][0] || v > LIM[k][1]) return;
+      cfg[k] = v;
+      try { localStorage.setItem("tabata-cfg", JSON.stringify(cfg)); } catch (e) {}
+      renderCfg();
+    });
+  });
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden && status === "running") requestWake();
+  });
+
+  document.querySelectorAll("#seg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      mode = b.dataset.m; paintMode();
+      try { localStorage.setItem("tabata-snd", mode); } catch (e) {}
+      if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+      if (ac && ac.state === "suspended") ac.resume();
+      unlockAudio();
+      if (mode === "beeps") beep(1100, 250); else if (mode === "voice") say("Work");
+      if (status !== "running" && silentEl) setTimeout(function () { silentEl.pause(); }, 1200);
+    });
+  });
+  paintMode();
+  renderCfg();
+})();
+</script>
+
+</body></html>
+<<<END_EXTERNAL_UNTRUSTED_CONTENT id="3cb78e530d83a986">>>
